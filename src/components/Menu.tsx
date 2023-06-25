@@ -6,6 +6,7 @@ import React, { useRef } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import Button from "./Button";
 import { navigations } from "./Header";
+import Logo from "./Logo";
 
 type Props = {
   onClose(): void;
@@ -33,7 +34,7 @@ const Menu = (props: Props) => {
         className="w-[75%] bg-white h-screen float-right rounded-tl-lg rounded-bl-lg shadow"
       >
         <div className="flex items-center justify-between px-5 py-5 border-b border-gray-200">
-          <img src="/logo.png" alt="" className="h-8 w-auto" />
+          <Logo />
 
           <button
             onClick={onClose}
@@ -43,7 +44,7 @@ const Menu = (props: Props) => {
           </button>
         </div>
 
-        <ul className="py-5 border-b border-gray-200 px-5">
+        {/* <ul className="py-5 border-b border-gray-200 px-5">
           {navigations.map((nav, index) => (
             <Link key={index} href={nav.path}>
               <li className="hover:bg-slate-100 py-3 mb-2 rounded-md pl-3 font-medium">
@@ -51,7 +52,7 @@ const Menu = (props: Props) => {
               </li>
             </Link>
           ))}
-        </ul>
+        </ul> */}
 
         <div className="px-5 space-y-3 py-5">
           <Button variant="text" className="w-full text-start">
