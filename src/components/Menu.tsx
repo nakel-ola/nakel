@@ -24,7 +24,7 @@ const Menu = (props: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed top-0 left-0 w-full h-screen backdrop-blur-sm z-50 bg-primary/30"
+      className="lg:hidden fixed top-0 left-0 w-full h-screen backdrop-blur-sm z-50 bg-primary/30"
     >
       <motion.div
         initial={{ marginRight: "-80%" }}
