@@ -47,7 +47,7 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
         <link rel="canonical" href="https://nakel.vercel.app/" />
       </Head>
-      <body className="flex flex-col justify-center">
+      <body className="flex flex-col justify-center bg-hero-gradient bg-no-repeat">
         <Main />
         <NextScript />
       </body>

@@ -15,7 +15,7 @@
   }
 
   *::-webkit-scrollbar-thumb {
-    @apply rounded-[30px] bg-primary;
+    @apply rounded-[30px] bg-white;
   }
 
   *::-webkit-scrollbar-track {
@@ -30,7 +30,7 @@
     @apply w-[5px] h-[5px];
   }
   body {
-    @apply bg-gradient-to-b from-primary-light to-primary-light/30 bg-no-repeat;
+    @apply bg-dark;
   }
 
   .click {
@@ -45,5 +45,43 @@
   }
   .scrollbar-hidden {
     scrollbar-width: none;
+  }
+
+  .polka-bg {
+    background-color: transparent;
+    opacity: 0.8;
+    background-image: radial-gradient(#026346 0.5px, transparent 0.5px),
+      radial-gradient(#026346 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+
+  .component-top {
+    width: 100%;
+    height: 400px;
+    margin-bottom: -400px;
+    pointer-events: none;
+    user-select: none;
+    --top: #000212;
+    --bottom: rgb(var(--rgb, 53, 42, 79));
+    --first: conic-gradient(from 90deg at 80% 50%, var(--top), var(--bottom));
+    --second: conic-gradient(from 270deg at 20% 50%, var(--bottom), var(--top));
+    -webkit-mask-image: radial-gradient(
+      100% 50% at center center,
+      black,
+      transparent
+    );
+    mask-image: radial-gradient(100% 50% at center center, black, transparent);
+    background-position-x: 1%, 99%;
+    background-position-y: 0%, 0%;
+    background-size: 50% 100%, 50% 100%;
+    opacity: 1;
+    transform: translateY(-200px) rotate(180deg) translateZ(0px);
+    transform-origin: center center;
+    background-repeat: no-repeat;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px #026346;
   }
 }

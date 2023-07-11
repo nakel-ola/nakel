@@ -4,13 +4,13 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonStyle = cva(
-  "h-fit  transition-colors duration-150 rounded-lg px-2.5 py-2 shrink-0 outline-0 disabled:bg-gray-200 disabled:text-gray-500 font-medium",
+  "h-fit text-white transition-all duration-300 rounded-lg px-2 pb-1.5 pt-1 shrink-0 outline-0 disabled:bg-gray-200 disabled:text-gray-500 font-medium flex items-center justify-center text-center click",
   {
     variants: {
       variant: {
-        solid: "bg-primary hover:bg-primary/80 text-white",
-        outlined: "border-[1.5px] border-primary text-primary",
-        text: "text-primary hover:bg-primary/10",
+        solid: "bg-burnham-800 hover:bg-burnham-600/80",
+        outlined: "border border-primary",
+        text: "text-primary",
       },
 
       size: {
@@ -42,7 +42,7 @@ const Button = (props: ButtonProps) => {
     ...rest
   } = props;
 
-  const rippleColor = variant === "solid" ? "light" : "rgba(0, 51, 38, 0.3)";
+  const rippleColor = variant === "solid" ? "light" : "rgba(0, 157, 105, 0.3)";
   return (
     <button
       onMouseDown={(e: any) => {

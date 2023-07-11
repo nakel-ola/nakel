@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import "@/styles/globals.css";
 import truncate from "@/utils/truncate";
 import ProgressBar from "@badrap/bar-of-progress";
@@ -19,10 +17,6 @@ export const data = {
 const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["cyrillic"],
-});
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["devanagari"],
 });
 
 const progress = new ProgressBar({
@@ -90,9 +84,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <meta property="og:type" content="website" />
       </Head>
       <main className={twJoin(rubik.className, "mx-auto w-full max-w-7xl")}>
-        <Header />
         <Component {...pageProps} />
-        <Footer />
       </main>
     </>
   );

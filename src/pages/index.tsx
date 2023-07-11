@@ -1,14 +1,24 @@
-import PageGradient from "@/components/PageGradient";
-import { Content, Features, Hero } from "@/features/home";
+import {
+  ComponentsCard,
+  Footer,
+  Header,
+  HeroCard,
+  HeroComponents,
+  TemplateCard
+} from "@/features/home";
 
 export default function Home() {
   return (
     <>
-      <PageGradient>
-        <Hero />
-        <Features />
-      </PageGradient>
-      <Content />
+      <main className="overflow-visible">
+        <Header />
+        <HeroCard />
+        <HeroComponents />
+        <ComponentsCard />
+        <TemplateCard />
+        <Footer />
+      </main>
     </>
   );
 }
+
