@@ -100,9 +100,9 @@ export const HeroSection = (props: Props) => {
         style={{ transform, transition }}
       >
         <img
-          src="/IMG_4579-depositphotos-bgremover.png"
+          src="/IMG_4579-depositphotos-bgremover.webp"
           alt=""
-          className=" lg:h-full lg:w-full object-cover translate-y-[-10%] lg:translate-y-0"
+          className="lg:h-full lg:w-full object-cover translate-y-[-10%] lg:translate-y-0"
         />
       </div>
     </div>
