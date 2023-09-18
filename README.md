@@ -50,3 +50,29 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 <!-- Theme -->
     <!-- list mode, dark mode, system mode -->
+
+<!-- Page Sections -->
+
+<!-- Elements -->
+
+<!-- Feedback -->
+
+<!-- Page Examples -->
+
+<!-- Application Shells -->
+
+<!-- Headings -->
+
+<!-- Data Display -->
+
+<!-- Lists -->
+
+<!-- Forms -->
+
+<!-- Navigation -->
+
+<!-- Overlays -->
+
+<!-- Layout -->
+
+<!-- Components -->

@@ -1,9 +1,6 @@
-import Logo from "@/components/Logo";
 import { buildLegacyTheme, defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
-import schemas from "./src/sanity/schemas";
-import {visionTool} from '@sanity/vision'
-
+import schemas from "./src/schemas";
 
 const props = {
   "--my-white": "#ffffff",
@@ -12,10 +9,11 @@ const props = {
   "--my-red": "#db4437",
   "--my-yellow": "#f4b400",
   "--my-green": "#0f9d58",
-  "--my-primary": "#003326",
+  "--my-primary": "#2563eb",
 };
 
 const myTheme = buildLegacyTheme({
+  
   /* Base theme colors */
   "--black": props["--my-black"],
   "--white": props["--my-white"],
@@ -57,14 +55,13 @@ export const defaultConfig = {
 
 const config = defineConfig({
   ...defaultConfig,
-  title: "Nakel UI Studio",
+  title: "Olamilekan Studio",
   basePath: "/admin",
   theme: myTheme,
-  plugins: [deskTool(),visionTool()],
+  plugins: [deskTool()],
   schema: {
     types: schemas,
   },
 });
 
 export default config;
-

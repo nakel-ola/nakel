@@ -1,0 +1,164 @@
+import emailjs from "@emailjs/browser";
+import { CallCalling, Sms } from "iconsax-react";
+import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { Input } from "./Input";
+import { NeuButton } from "./NeuButton";
+import { Textarea } from "./Textarea";
+
+import { MoonLoader } from "react-spinners";
+import { RippleCard } from "./RippleCard";
+type Props = {};
+
+export const ContactSection = (props: Props) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const disabled = (): boolean => {
+    if (!formRef.current) return false;
+    const formData = new FormData(formRef.current);
+
+    const values: boolean[] = [];
+    formData.forEach((value) => {
+      if (!value) return values.push(false);
+      else values.push(true);
+    });
+
+    return values.every((value) => value === true) ? false : true;
+  };
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!formRef.current) return;
+
+    const v = disabled();
+
+    if (v) return;
+
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        process.env.EMAILJS_SERVICE_ID!,
+        process.env.EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        process.env.EMAILJS_PUBLIC_KEY!
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          formRef.current?.reset();
+          setIsSubmitted(true);
+        },
+        (error) => {
+          setLoading(false);
+        }
+      );
+  };
+  return (
+    <div
+      id="contact"
+      className="my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
+    >
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="text-2xl lg:text-5xl font-bold text-white text-center my-3">
+          Get In Touch
+        </h2>
+
+        <p className="">I will truly turn your idea, vision into reality</p>
+      </div>
+
+      <div className="w-full lg:w-[50%] bg-card-color border-[1px] border-line-color rounded-3xl p-10">
+        {loading && (
+          <div className="w-full grid place-items-center py-4">
+            <MoonLoader />
+          </div>
+        )}
+
+        {isSubmitted && (
+          <div className="w-full grid place-items-center py-4">
+            <p className="text-5xl text-center">
+              Thank you for getting in touch!
+            </p>
+          </div>
+        )}
+
+        {!loading && !isSubmitted ? (
+          <form onSubmit={handleSubmit} className="w-full space-y-5 ">
+            <div className="">
+              <label htmlFor="" className="text-white text-xl">
+                Name
+              </label>
+
+              <div className="w-full bg-[#343639] h-[50px] rounded-lg flex mt-1">
+                <input
+                  type="text"
+                  className="bg-transparent text-lg border-0 w-full outline-0 text-white px-2 my-auto"
+                  name="name"
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            <div className="">
+              <label htmlFor="" className="text-white text-xl">
+                Email
+              </label>
+
+              <div className="w-full bg-[#343639] h-[50px] rounded-lg flex mt-1">
+                <input
+                  type="email"
+                  className="bg-transparent text-lg border-0 w-full outline-0 text-white px-2 my-auto"
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            <div className="">
+              <label htmlFor="" className="text-white text-xl">
+                About Project
+              </label>
+
+              <div className="w-full bg-[#343639] min-h-[50px] rounded-lg flex mt-2">
+                <textarea
+                  rows={4}
+                  className="bg-transparent text-lg border-0 w-full outline-0 text-white px-2 my-auto resize-none"
+                  autoComplete="text"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="">
+              <RippleCard
+                type="submit"
+                className="bg-white w-full text-lg font-medium flex items-center justify-center py-2 rounded-lg hover:scale-105 active:scale-95 mt-10"
+              >
+                Send Message
+              </RippleCard>
+            </div>
+          </form>
+        ) : null}
+      </div>
+    </div>
+  );
+};

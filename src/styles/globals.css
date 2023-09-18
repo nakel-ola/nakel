@@ -10,12 +10,13 @@
     margin: 0;
     padding: 0;
   }
+
   *::-webkit-scrollbar {
     @apply w-[5px] h-[5px];
   }
 
   *::-webkit-scrollbar-thumb {
-    @apply rounded-[30px] bg-white;
+    @apply rounded-[30px] bg-primary;
   }
 
   *::-webkit-scrollbar-track {
@@ -29,59 +30,45 @@
   *::-ms-scrollbar {
     @apply w-[5px] h-[5px];
   }
+
   body {
-    @apply bg-dark;
+    @apply bg-dark font-signika-negative;
   }
 
   .click {
-    @apply hover:scale-105 active:scale-95 transition-all duration-300 group-hover:scale-105 group-active:scale-95;
+    @apply hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 group-hover:scale-105 group-active:scale-95;
   }
 
   .scrollbar-hidden::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-hidden::-ms-overflow-style {
     display: none;
   }
+
   .scrollbar-hidden {
     scrollbar-width: none;
   }
 
-  .polka-bg {
-    background-color: transparent;
-    opacity: 0.8;
-    background-image: radial-gradient(#026346 0.5px, transparent 0.5px),
-      radial-gradient(#026346 0.5px, transparent 0.5px);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px transparent;
   }
 
-  .component-top {
-    width: 100%;
-    height: 400px;
-    margin-bottom: -400px;
-    pointer-events: none;
-    user-select: none;
-    --top: #000212;
-    --bottom: rgb(var(--rgb, 53, 42, 79));
-    --first: conic-gradient(from 90deg at 80% 50%, var(--top), var(--bottom));
-    --second: conic-gradient(from 270deg at 20% 50%, var(--bottom), var(--top));
-    -webkit-mask-image: radial-gradient(
-      100% 50% at center center,
-      black,
-      transparent
-    );
-    mask-image: radial-gradient(100% 50% at center center, black, transparent);
-    background-position-x: 1%, 99%;
-    background-position-y: 0%, 0%;
-    background-size: 50% 100%, 50% 100%;
-    opacity: 1;
-    transform: translateY(-200px) rotate(180deg) translateZ(0px);
-    transform-origin: center center;
-    background-repeat: no-repeat;
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 
-  .glow {
-    box-shadow: 0 0 40px #026346;
+  .scrollbar-hide::-ms-overflow-style {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
   }
 }

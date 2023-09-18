@@ -2,38 +2,28 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    fontFamily: {
+      "signika-negative": ["var(--font-signika-negative)"],
+    },
     extend: {
       colors: {
-        primary: "#003326",
+        primary: {
+          DEFAULT: "#2563eb",
+          light: "#eff6ff",
+        },
+        dark: "#111111",
+        "card-color": "#1a1a1c",
+        "line-color": "#323335",
+        gray: "#9294a0",
+        "charcoal-gray": "#36384f",
         white: "#ffffff",
         black: "#000000",
-        dark: "#000212",
-        line: "#313649",
-        burnham: {
-          50: "#ebfef5",
-          100: "#cffce4",
-          200: "#a3f7cf",
-          300: "#68edb6",
-          400: "#2cdb98",
-          500: "#08c181",
-          600: "#009d69",
-          700: "#007e57",
-          800: "#026346",
-          900: "#03513c",
-          950: "#003326",
-        },
-      },
-      backgroundImage: {
-        "hero-gradient":
-          "radial-gradient(ellipse 80% 30% at 50% 0%,rgba(0,51,38,1),transparent)",
-        "hero-gradient-big":
-          "radial-gradient(ellipse 100% 100% at 50% 0%,#03513c,transparent)",
-        "hero-gradient-2":
-          "radial-gradient(circle, rgba(0,51,38,1) 0%, rgba(0,2,18,1) 100%)",
-        "box-gradient":
-          "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.10) 100%)",
-        "component-gradient":
-          "radial-gradient(ellipse 100% 40% at 50% 60%,rgba(0,51,38,1),transparent)",
+        hover: "#f1f5f9",
+        transparent: "transparent",
+        green: "#22C55E",
+        blue: "#38BDF8",
+        wine: "#e11d48",
+        yellow: "#FACC15",
       },
     },
   },
