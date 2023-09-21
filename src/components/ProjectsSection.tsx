@@ -19,13 +19,13 @@ export const ProjectsSection = (props: Props) => {
 
   const router = useRouter();
 
-  const sortedProjects = projects.sort((a, b) => a.pos - b.pos);
+  const items = showAll ? projects : projects.slice(0, 6);
 
-  const items = showAll ? sortedProjects : sortedProjects.slice(0, 6);
-
-  // console.log(items);
   return (
-    <div className={cn("px-5 lg:px-10", showAll ? "pt-0" : "pt-16 ")}>
+    <div
+      id="projects"
+      className={cn("px-5 lg:px-10", showAll ? "pt-0" : "pt-16 ")}
+    >
       <div className="py-10 w-full">
         <h2 className="text-3xl lg:text-5xl font-bold text-white text-center my-3">
           My Creative{" "}

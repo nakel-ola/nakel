@@ -7,6 +7,7 @@ import { Slide, Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useLockedBody, useOnClickOutside } from "usehooks-ts";
 import { RippleCard } from "./RippleCard";
+import Link from "next/link";
 
 type Props = {
   selected: ProjectResponse | null;
@@ -42,25 +43,25 @@ export const Modal = (props: Props) => {
 
           <div className="py-2 ">
             {link ? (
-              <a
+              <Link
                 href={link}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-primary/20 w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-primary"
               >
                 Live Preview
-              </a>
+              </Link>
             ) : null}
 
             {github ? (
-              <a
+              <Link
                 href={github}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-primary/20 w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-primary ml-2"
               >
                 Git link
-              </a>
+              </Link>
             ) : null}
           </div>
 

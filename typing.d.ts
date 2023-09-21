@@ -14,6 +14,26 @@ interface AboutResponse extends sanityDefaultProps {
   address: string;
   email: string;
   resume: any;
+  educations: Educations[];
+  works: Works[];
+}
+
+interface Educations {
+  institute: string;
+  degree: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  credentialUrl: string;
+}
+
+interface Works {
+  title: string;
+  company: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  bullets: string[];
 }
 
 interface SkillResponse {

@@ -7,3 +7,4 @@ export * from "./instagram";
 export * from "./linkedin";
 export * from "./menu";
 export * from "./close";
+export * from "./external-link";

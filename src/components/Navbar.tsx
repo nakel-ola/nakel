@@ -10,6 +10,8 @@ type Props = {};
 export const Navbar = (props: Props) => {
   const router = useRouter();
 
+  if (router.pathname === "/admin/[[...index]]") return <Fragment></Fragment>;
+
   return (
     <Fragment>
       <nav className="px-5 lg:px-10 py-4 flex items-center justify-between sticky top-0 z-50 bg-dark">
@@ -34,7 +36,8 @@ export const Navbar = (props: Props) => {
           </ul>
 
           <RippleCard
-            Component="button"
+            Component={Link}
+            href="#contact"
             className="ml-8 bg-white py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
           >
             Get in touch
@@ -48,21 +51,13 @@ export const Navbar = (props: Props) => {
 };
 
 export const navigations = [
-  // {
-  //   name: "Home",
-  //   href: "/",
-  // },
   {
     name: "About",
-    href: "#about_me",
+    href: "#about",
   },
   {
     name: "Skills",
     href: "#skills",
-  },
-  {
-    name: "Services",
-    href: "#services",
   },
   {
     name: "Projects",

@@ -45,6 +45,7 @@
 
   .scrollbar-hidden::-ms-overflow-style {
     display: none;
+    background-color: #2463eb;
   }
 
   .scrollbar-hidden {

@@ -1,15 +1,19 @@
 import emailjs from "@emailjs/browser";
-import { CallCalling, Sms } from "iconsax-react";
-import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { Input } from "./Input";
-import { NeuButton } from "./NeuButton";
-import { Textarea } from "./Textarea";
-
+import { useRouter } from "next/router";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  Fragment,
+  useRef,
+  useState,
+} from "react";
 import { MoonLoader } from "react-spinners";
 import { RippleCard } from "./RippleCard";
 type Props = {};
 
 export const ContactSection = (props: Props) => {
+  const router = useRouter();
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const [form, setForm] = useState({
@@ -68,14 +72,19 @@ export const ContactSection = (props: Props) => {
         }
       );
   };
+
+  if (router.pathname === "/admin/[[...index]]") return <Fragment></Fragment>;
   return (
     <div
       id="contact"
       className="my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
     >
       <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl lg:text-5xl font-bold text-white text-center my-3">
-          Get In Touch
+        <h2 className="text-3xl lg:text-5xl font-bold text-white text-center my-3">
+          Get In{" "}
+          <span className="text-primary drop-shadow-[3px_3px_0px_black] translate-x-[3px] translate-y-[3px] rotate-6">
+            Touch
+          </span>
         </h2>
 
         <p className="">I will truly turn your idea, vision into reality</p>

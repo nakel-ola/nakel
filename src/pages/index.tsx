@@ -23,15 +23,14 @@ export default function Home(props: HomePropType) {
     <Fragment>
       <HeroSection />
       <ProjectsSection
-        projects={projects}
+        projects={projects.sort((a, b) => a.pos - b.pos)}
         selected={selected}
         setSelected={setSelected}
       />
+      <AboutMeSection about={about} />
       <SkillsSection skills={skills} />
       {/*
       <ServicesSection />
-
-      <AboutMeSection />
       */}
 
       <Modal selected={selected} setSelected={setSelected} />
