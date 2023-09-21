@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import React from "react";
 import { RippleCard } from "./RippleCard";
+import { Element } from "react-scroll";
 
 type Props = {
   skills: SkillResponse[];
@@ -13,7 +14,7 @@ const MotionDiv = motion("div");
 export const SkillsSection = (props: Props) => {
   const { skills } = props;
   return (
-    <div id="skills" className="py-16 px-5 lg:px-10">
+    <Element name="skills" className="py-16 px-5 lg:px-10">
       <div className="py-10 w-full">
         <h2 className="text-3xl lg:text-5xl font-bold text-white text-center my-3">
           My{" "}
@@ -56,6 +57,6 @@ export const SkillsSection = (props: Props) => {
           </RippleCard>
         ))}
       </motion.div>
-    </div>
+    </Element>
   );
 };

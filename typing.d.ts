@@ -13,7 +13,7 @@ interface AboutResponse extends sanityDefaultProps {
   tel: string;
   address: string;
   email: string;
-  resume: any;
+  resume: string;
   educations: Educations[];
   works: Works[];
 }

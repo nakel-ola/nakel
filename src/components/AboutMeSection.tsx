@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
+import { Element } from "react-scroll";
 
 type Props = {
   about: AboutResponse;
@@ -10,8 +11,8 @@ type Props = {
 export const AboutMeSection = (props: Props) => {
   const { about } = props;
   return (
-    <div
-      id="about"
+    <Element
+      name="about"
       className="pt-16 flex flex-col items-center justify-center px-5 lg:px-10"
     >
       <div className="py-10 w-full">
@@ -50,7 +51,7 @@ export const AboutMeSection = (props: Props) => {
         <EducationCard items={about.educations} />
         <WorkCard items={about.works} />
       </div>
-    </div>
+    </Element>
   );
 };
 

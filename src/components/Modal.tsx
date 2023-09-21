@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from "@/icons";
+import { ArrowLeftIcon, ArrowRightIcon, CloseIcon, GithubIcon } from "@/icons";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { Fragment, useRef, useState } from "react";
 import { Slide, Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useLockedBody, useOnClickOutside } from "usehooks-ts";
 import { RippleCard } from "./RippleCard";
-import Link from "next/link";
 
 type Props = {
   selected: ProjectResponse | null;
@@ -41,27 +41,30 @@ export const Modal = (props: Props) => {
           <p className="text-5xl font-extrabold py-2 text-white">{name}</p>
           <p className="text-neutral-500  pb-4">{description}</p>
 
-          <div className="py-2 ">
+          <div className="py-2 flex space-x-5">
             {link ? (
               <Link
                 href={link}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-primary/20 w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-primary"
+                className="bg-red-500 w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-white font-medium"
               >
                 Live Preview
               </Link>
             ) : null}
 
             {github ? (
-              <Link
+              <RippleCard
+                Component={Link}
                 href={github}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-primary/20 w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-primary ml-2"
+                className="bg-white hover:bg-primary w-fit px-4 py-2 rounded-lg my-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-primary hover:text-white ml-2 flex font-medium group"
               >
-                Git link
-              </Link>
+                <GithubIcon className="text-primary group-hover:text-white" />
+
+                <span className="ml-2">Github link</span>
+              </RippleCard>
             ) : null}
           </div>
 

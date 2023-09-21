@@ -21,7 +21,7 @@ export default function Home(props: HomePropType) {
   const [selected, setSelected] = useState<ProjectResponse | null>(null);
   return (
     <Fragment>
-      <HeroSection />
+      <HeroSection resumeUrl={about.resume} />
       <ProjectsSection
         projects={projects.sort((a, b) => a.pos - b.pos)}
         selected={selected}

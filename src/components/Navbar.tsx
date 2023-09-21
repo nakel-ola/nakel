@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { Link as ScrollLink } from "react-scroll";
 import MenuCard from "./MenuCard";
 import { RippleCard } from "./RippleCard";
 
@@ -25,20 +26,29 @@ export const Navbar = (props: Props) => {
           <ul className="hidden lg:flex items-center space-x-8 ">
             {navigations.map((navigation, index) => (
               <li key={index} className="group cursor-pointer">
-                <Link
-                  href={navigation.href}
+                <ScrollLink
+                  to={navigation.name.toLowerCase()}
+                  spy={true}
+                  smooth={true}
+                  offset={20}
+                  duration={500}
                   className="group-hover:text-white text-neutral-500 text-base transition-all duration-300"
+                  activeClass="text-primary group-hover:text-primary"
                 >
                   {navigation.name}
-                </Link>
+                </ScrollLink>
               </li>
             ))}
           </ul>
 
           <RippleCard
-            Component={Link}
-            href="#contact"
-            className="ml-8 bg-white py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-80}
+            duration={500}
+            Component={ScrollLink}
+            className="ml-8 bg-white hover:bg-primary text-black hover:text-white  py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
           >
             Get in touch
           </RippleCard>
@@ -52,15 +62,15 @@ export const Navbar = (props: Props) => {
 
 export const navigations = [
   {
+    name: "Projects",
+    href: "#projects",
+  },
+  {
     name: "About",
     href: "#about",
   },
   {
     name: "Skills",
     href: "#skills",
-  },
-  {
-    name: "Projects",
-    href: "#projects",
   },
 ];

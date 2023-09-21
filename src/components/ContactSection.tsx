@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { Element } from "react-scroll";
 import { MoonLoader } from "react-spinners";
 import { RippleCard } from "./RippleCard";
 type Props = {};
@@ -75,8 +76,8 @@ export const ContactSection = (props: Props) => {
 
   if (router.pathname === "/admin/[[...index]]") return <Fragment></Fragment>;
   return (
-    <div
-      id="contact"
+    <Element
+      name="contact"
       className="my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
     >
       <div className="flex flex-col items-center justify-center">
@@ -160,7 +161,7 @@ export const ContactSection = (props: Props) => {
             <div className="">
               <RippleCard
                 type="submit"
-                className="bg-white w-full text-lg font-medium flex items-center justify-center py-2 rounded-lg hover:scale-105 active:scale-95 mt-10"
+                className="bg-white hover:bg-primary text-black hover:text-white w-full text-lg font-medium flex items-center justify-center py-2 rounded-lg hover:scale-105 active:scale-95 mt-10"
               >
                 Send Message
               </RippleCard>
@@ -168,6 +169,6 @@ export const ContactSection = (props: Props) => {
           </form>
         ) : null}
       </div>
-    </div>
+    </Element>
   );
 };

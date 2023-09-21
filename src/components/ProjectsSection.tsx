@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
+import { Element } from "react-scroll";
 import { RippleCard } from "./RippleCard";
 
 type Props = {
@@ -22,8 +23,8 @@ export const ProjectsSection = (props: Props) => {
   const items = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <div
-      id="projects"
+    <Element
+      name="projects"
       className={cn("px-5 lg:px-10", showAll ? "pt-0" : "pt-16 ")}
     >
       <div className="py-10 w-full">
@@ -45,14 +46,14 @@ export const ProjectsSection = (props: Props) => {
         <div className="flex items-center justify-center mt-10">
           <RippleCard
             Component="button"
-            className="bg-white py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
+            className="bg-white hover:bg-primary text-black hover:text-white py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
             onClick={() => router.push("/projects")}
           >
             View more
           </RippleCard>
         </div>
       )}
-    </div>
+    </Element>
   );
 };
 

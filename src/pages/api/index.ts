@@ -10,28 +10,29 @@ import { groq } from "next-sanity";
 import { sanityClient } from "@/lib/sanity";
 
 const query = groq`
-    {
-        "about": *[_type == "about"][0] {
+  {
+    "about": *[_type == "about"][0] {
+      ...,
+      "image": image.asset->url,
+      "resume": resume.asset->url,
+    },
+    "skills": *[_type == "skills"] | order(createdAt asc) {
+      ...,
+      "image": image.asset->url,
+    },
+    "services": *[_type == "services"] {
+      ...,
+      "image": image.asset->url,
+    },
+    "projects": *[_type == "projects"] | order(createdAt asc) {
+      ...,
+      "images": images[].asset->url,
+        tech[]->{
           ...,
           "image": image.asset->url,
-        },
-        "skills": *[_type == "skills"] | order(createdAt asc) {
-          ...,
-          "image": image.asset->url,
-        },
-        "services": *[_type == "services"] {
-          ...,
-          "image": image.asset->url,
-        },
-        "projects": *[_type == "projects"] | order(createdAt asc) {
-            ...,
-            "images": images[].asset->url,
-            tech[]->{
-            ...,
-            "image": image.asset->url,
-            }
         }
     }
+  }
 `;
 
 export type ResponseData = {

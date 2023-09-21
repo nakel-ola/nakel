@@ -10,7 +10,9 @@ interface Item {
   Icon: any;
 }
 
-type Props = {};
+type Props = {
+  resumeUrl: string;
+};
 
 export const socialItems: Item[] = [
   {
@@ -32,6 +34,7 @@ export const socialItems: Item[] = [
 ];
 
 export const HeroSection = (props: Props) => {
+  const { resumeUrl } = props;
   const { ref, transform, transition } = useHover3d({ x: 30, y: -40, z: 30 });
 
   return (
@@ -69,8 +72,11 @@ export const HeroSection = (props: Props) => {
 
         <div className="h-fit lg:h-[80px] w-full border-[1px] border-line-color bg-card-color rounded-3xl mt-[20px] flex items-center px-10 flex-col lg:flex-row gap-5 py-5">
           <RippleCard
-            Component="button"
-            className="bg-white py-2.5 px-10 rounded-full font-medium hover:scale-105 active:scale-95 w-full lg:w-fit"
+            Component={Link}
+            href={resumeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-white hover:bg-primary text-black hover:text-white py-2.5 px-10 rounded-full font-medium hover:scale-105 active:scale-95 w-full lg:w-fit"
           >
             My Resume
           </RippleCard>
