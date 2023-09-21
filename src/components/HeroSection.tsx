@@ -53,10 +53,10 @@ export const HeroSection = (props: Props) => {
             </div>
           </div>
 
-          <div className="absolute top-0 left-0 h-full w-full p-10 flex flex-col">
+          <div className="absolute top-0 left-0 h-full w-full px-5 py-10  lg:p-10 flex flex-col">
             <h1 className="text-3xl lg:text-5xl text-white max-w-xl font-medium ">
               Hello, I&rsquo;m{" "}
-              <span className="font-medium text-6xl text-primary">
+              <span className="font-medium text-4xl lg:text-6xl text-primary">
                 Olamilekan
               </span>
               , A Full Stack Developer
@@ -76,7 +76,7 @@ export const HeroSection = (props: Props) => {
             href={resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="bg-white hover:bg-primary text-black hover:text-white py-2.5 px-10 rounded-full font-medium hover:scale-105 active:scale-95 w-full lg:w-fit"
+            className="bg-white hover:bg-primary text-black hover:text-white py-2.5 px-10 rounded-full font-medium hover:scale-105 active:scale-95 w-full lg:w-fit text-center"
           >
             My Resume
           </RippleCard>

@@ -38,7 +38,7 @@ export const AboutMeSection = (props: Props) => {
           />
         </div>
 
-        <div className="max-w-md ml-10">
+        <div className="max-w-md mx-5 lg:mx-10">
           <h2 className="text-primary text-2xl lg:text-4xl font-bold">
             Web Developer
           </h2>

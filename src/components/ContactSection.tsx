@@ -78,7 +78,7 @@ export const ContactSection = (props: Props) => {
   return (
     <Element
       name="contact"
-      className="my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
+      className="my-8 lg:my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-3xl lg:text-5xl font-bold text-white text-center my-3">
@@ -91,7 +91,7 @@ export const ContactSection = (props: Props) => {
         <p className="">I will truly turn your idea, vision into reality</p>
       </div>
 
-      <div className="w-full lg:w-[50%] bg-card-color border-[1px] border-line-color rounded-3xl p-10">
+      <div className="w-full lg:w-[50%] bg-card-color border-[1px] border-line-color rounded-3xl px-5 lg:px-10 py-10">
         {loading && (
           <div className="w-full grid place-items-center py-4">
             <MoonLoader />

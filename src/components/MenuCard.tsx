@@ -2,6 +2,7 @@
 import { motion, useCycle } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
+import { Link as ScrollLink } from "react-scroll";
 import { useLockedBody, useWindowSize } from "usehooks-ts";
 import { socialItems } from "./HeroSection";
 import { MenuToggle } from "./MenuToggle";
@@ -20,7 +21,7 @@ const MenuCard = () => {
 
       if (isOpen) toggleOpen();
     }
-  }, [screen, toggleOpen, isOpen,]);
+  }, [screen, toggleOpen, isOpen]);
 
   return (
     <motion.div
@@ -48,7 +49,7 @@ const MenuCard = () => {
           },
         }}
       >
-        <Navigation />
+        <Navigation onClick={() => toggleOpen()} />
       </motion.div>
       <MenuToggle onClick={() => toggleOpen()} />
     </motion.div>
@@ -66,7 +67,7 @@ const variants = {
   },
 };
 
-export const Navigation = () => (
+export const Navigation = ({ onClick }: { onClick(): void }) => (
   <motion.ul
     variants={variants}
     className="p-[25px] pt-[60px] space-y-10 flex flex-col items-center justify-center"
@@ -79,31 +80,45 @@ export const Navigation = () => (
         whileTap={{ scale: 0.95 }}
         className="group flex items-center justify-center text-white cursor-pointer"
       >
-        <Link
-          href={navigation.href}
+        <ScrollLink
+          to={navigation.name.toLowerCase()}
+          spy={true}
+          smooth={true}
+          offset={20}
+          duration={500}
+          onClick={onClick}
           className="group-hover:text-white text-neutral-500 text-4xl transition-all duration-300"
         >
           {navigation.name}
-        </Link>
+        </ScrollLink>
       </motion.li>
     ))}
 
-    <RippleCard
-      Component={MotionButton}
-      variants={{
-        open: {
-          ...menuItemVariants.open,
-          display: "block",
-        },
-        closed: {
-          ...menuItemVariants.closed,
-          display: "none",
-        },
-      }}
-      className=" bg-white p-2 rounded-xl font-medium hover:scale-105 active:scale-95"
+    <ScrollLink
+      to="contact"
+      spy={true}
+      smooth={true}
+      offset={-80}
+      duration={500}
     >
-      Get in touch
-    </RippleCard>
+      <RippleCard
+        Component={MotionButton}
+        onClick={onClick}
+        variants={{
+          open: {
+            ...menuItemVariants.open,
+            display: "block",
+          },
+          closed: {
+            ...menuItemVariants.closed,
+            display: "none",
+          },
+        }}
+        className=" bg-white hover:bg-primary text-black hover:text-white  py-2 px-5 rounded-full font-medium hover:scale-105 active:scale-95"
+      >
+        Get in touch
+      </RippleCard>
+    </ScrollLink>
 
     <motion.li
       key={5}

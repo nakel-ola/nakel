@@ -69,7 +69,7 @@ const Card = (props: CardProps) => {
       className="bg-card-color border-[1px] border-line-color rounded-3xl overflow-hidden min-h-[300px] cursor-pointer"
       onClick={() => setSelected(props)}
     >
-      <div className="overflow-hidden w-full h-[280px] relative">
+      <div className="overflow-hidden w-full h-[200px] lg:h-[280px] relative">
         <motion.img
           initial={false}
           src={images[0]}
@@ -78,7 +78,7 @@ const Card = (props: CardProps) => {
           className="h-full w-full object-cover relative"
         />
 
-        <div className="absolute h-[100px] bottom-0 w-full bg-gradient-to-b from-black/0 via-card-color/60 to-card-color"></div>
+        <div className="absolute h-[50px] lg:h-[100px] bottom-0 w-full bg-gradient-to-b from-black/0 via-card-color/60 to-card-color"></div>
       </div>
 
       <div className="w-full z-10 p-5">
