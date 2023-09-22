@@ -55,7 +55,7 @@ export const useHover3d = (args: Args = { z: 0, x: 0, y: 0 }) => {
 
   const transform = `perspective(5000px) rotateX(${xTransform}deg) rotateY(${yTransform}deg) translateZ(${zTransform}px)`;
 
-  const transition = isHovering ? `transform 0.1s ease-out` : "";
+  const transition = isHovering ? `transform 0.3s ease-out` : "";
 
   return { ref, transition, transform };
 };
