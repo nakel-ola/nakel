@@ -88,26 +88,32 @@ export const ContactSection = (props: Props) => {
           </span>
         </h2>
 
-        <p className=" text-xl lg:text-2xl text-center">I will truly turn your idea, vision into reality</p>
+        <p className=" text-xl lg:text-2xl text-center">
+          I will truly turn your idea, vision into reality
+        </p>
       </div>
 
       <div className="w-full lg:w-[50%] bg-card-color border-[1px] border-line-color rounded-3xl px-5 lg:px-10 py-10">
         {loading && (
           <div className="w-full grid place-items-center py-4">
-            <MoonLoader />
+            <MoonLoader color="#fff" />
           </div>
         )}
 
         {isSubmitted && (
           <div className="w-full grid place-items-center py-4">
-            <p className="text-5xl text-center">
+            <p className="text-3xl lg:text-5xl text-center text-white">
               Thank you for getting in touch!
             </p>
           </div>
         )}
 
         {!loading && !isSubmitted ? (
-          <form onSubmit={handleSubmit} className="w-full space-y-5 ">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="w-full space-y-5 "
+          >
             <div className="">
               <label htmlFor="" className="text-white text-xl">
                 Name
@@ -162,6 +168,7 @@ export const ContactSection = (props: Props) => {
 
             <div className="">
               <RippleCard
+                Component="button"
                 type="submit"
                 className="bg-white hover:bg-primary text-black hover:text-white w-full text-lg font-medium flex items-center justify-center py-2 rounded-lg hover:scale-105 active:scale-95 mt-10"
               >
