@@ -80,7 +80,7 @@ export const ContactSection = (props: Props) => {
       name="contact"
       className="my-8 lg:my-16 px-5 lg:px-10 flex flex-col items-center justify-center"
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center pb-10">
         <h2 className="text-3xl lg:text-5xl font-bold text-white text-center my-3">
           Get In{" "}
           <span className="text-primary drop-shadow-[3px_3px_0px_black] translate-x-[3px] translate-y-[3px] rotate-6">
@@ -88,7 +88,7 @@ export const ContactSection = (props: Props) => {
           </span>
         </h2>
 
-        <p className="">I will truly turn your idea, vision into reality</p>
+        <p className=" text-xl lg:text-2xl text-center">I will truly turn your idea, vision into reality</p>
       </div>
 
       <div className="w-full lg:w-[50%] bg-card-color border-[1px] border-line-color rounded-3xl px-5 lg:px-10 py-10">
@@ -125,7 +125,7 @@ export const ContactSection = (props: Props) => {
                 />
               </div>
             </div>
-            <div className="">
+            <div className="text-white">
               <label htmlFor="" className="text-white text-xl">
                 Email
               </label>
@@ -134,6 +134,7 @@ export const ContactSection = (props: Props) => {
                 <input
                   type="email"
                   className="bg-transparent text-lg border-0 w-full outline-0 text-white px-2 my-auto"
+                  name="email"
                   autoComplete="email"
                   value={form.email}
                   onChange={handleChange}
@@ -151,6 +152,7 @@ export const ContactSection = (props: Props) => {
                   rows={4}
                   className="bg-transparent text-lg border-0 w-full outline-0 text-white px-2 my-auto resize-none"
                   autoComplete="text"
+                  name="message"
                   value={form.message}
                   onChange={handleChange}
                   required

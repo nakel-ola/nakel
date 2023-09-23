@@ -15,7 +15,7 @@ export default function Projects(props: Props) {
   return (
     <main>
       <ProjectsSection
-        projects={projects}
+        projects={projects.sort((a, b) => a.pos - b.pos)}
         showAll
         selected={selected}
         setSelected={setSelected}
@@ -37,14 +37,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const query = groq`
-    {
-        "projects": *[_type == "projects"] | order(createdAt asc) {
-            ...,
-            "images": images[].asset->url,
-            tech[]->{
-            ...,
-            "image": image.asset->url,
-            }
-        }
+  {
+    "projects": *[_type == "projects"] | order(createdAt asc) {
+      ...,
+      "images": images[].asset->url,
+      tech[]->{
+        ...,
+        "image": image.asset->url,
+      }
     }
+  }
 `;

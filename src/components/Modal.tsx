@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon, GithubIcon } from "@/icons";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Fragment, useRef, useState } from "react";
-import { Slide, Zoom } from "react-slideshow-image";
+import { useRef, useState } from "react";
+import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useLockedBody, useOnClickOutside } from "usehooks-ts";
 import { RippleCard } from "./RippleCard";

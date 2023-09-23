@@ -29,9 +29,6 @@ export default function Home(props: HomePropType) {
       />
       <AboutMeSection about={about} />
       <SkillsSection skills={skills} />
-      {/*
-      <ServicesSection />
-      */}
 
       <Modal selected={selected} setSelected={setSelected} />
     </Fragment>
