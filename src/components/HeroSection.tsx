@@ -42,7 +42,7 @@ export const HeroSection = (props: Props) => {
       ref={ref}
       className="mt-5 px-5 lg:px-10 flex lg:flex-row flex-col-reverse justify-between gap-5  w-full"
     >
-      <div className="w-full h-[500px]">
+      <div className="w-full min-h-[500px]">
         <div className="h-[calc(100%-100px)] w-full rounded-3xl relative overflow-hidden border-[1px] border-line-color bg-card-color">
           <div className="h-full w-full relative">
             <div
