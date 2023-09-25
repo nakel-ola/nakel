@@ -62,7 +62,7 @@ export const HeroSection = (props: Props) => {
               , A Full Stack Developer
             </h1>
 
-            <p className="text-white mt-10 max-w-2xl">
+            <p className="text-white my-10 max-w-2xl">
               I&apos;m a full stack developer with understanding of both frontend and backend web development. I am 
               proficient in a variety of programming languages, frameworks, and tools, allowing for the development and
               deployment of dynamic online applications, websites, and powerful web services. Excellent organizational
