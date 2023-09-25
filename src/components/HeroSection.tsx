@@ -63,9 +63,10 @@ export const HeroSection = (props: Props) => {
             </h1>
 
             <p className="text-white mt-10 max-w-2xl">
-              Motivated frontend developer with extensive web development
-              knowledge, skilled in various programming languages, frameworks,
-              and tools.
+              I'm a full stack developer with understanding of both frontend and backend web development. I am 
+              proficient in a variety of programming languages, frameworks, and tools, allowing for the development and
+              deployment of dynamic online applications, websites, and powerful web services. Excellent organizational
+              skills, great attention to detail, and an aptitude for creative problem-solving.
             </p>
           </div>
         </div>
