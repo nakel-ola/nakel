@@ -1,78 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nakel porfolio 2.0
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+A portfolio website built with Next.js and Sanity cms
+
+## Demo
+<img src="./public/mobile (4).png" style="width: 48%" />
+
+## Run
+
+To run this application, you have to set your own environmental variables. Below are the variables that you need to set in order to run the application:
+
+BASE_URL
+
+SANITY_PROJECT_ID
+
+SANITY_DATASET
+
+SANITY_TOKEN
+
+EMAILJS_SERVICE_ID
+
+EMAILJS_TEMPLATE_ID
+
+EMAILJS_PUBLIC_KEY
+
+Now you can run app in the terminal.
 
 ```bash
+cd nakel
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-
-<!-- Pages -->
-    <!-- name, description, link -->
-
-<!-- Dependencies -->
-    <!-- name, link -->
-
-<!-- Environment Variables -->
-    <!-- list of the envs -->
-
-<!-- Theme -->
-    <!-- list mode, dark mode, system mode -->
-
-<!-- Page Sections -->
-
-<!-- Elements -->
-
-<!-- Feedback -->
-
-<!-- Page Examples -->
-
-<!-- Application Shells -->
-
-<!-- Headings -->
-
-<!-- Data Display -->
-
-<!-- Lists -->
-
-<!-- Forms -->
-
-<!-- Navigation -->
-
-<!-- Overlays -->
-
-<!-- Layout -->
-
-<!-- Components -->
+Happy Coding (Nakel) 🎉
