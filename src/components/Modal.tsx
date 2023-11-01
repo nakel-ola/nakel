@@ -120,7 +120,7 @@ const ImageSlider = (props: ImageSliderProps) => {
           prevArrow={
             active !== 0 ? (
               <button className="bg-white p-2 rounded-full font-medium hover:scale-105 active:scale-95 shadow-md shrink-0 ml-2 w-fit">
-                <ArrowLeftIcon />
+                <ArrowLeftIcon className="text-black" />
               </button>
             ) : (
               <button></button>
@@ -129,7 +129,7 @@ const ImageSlider = (props: ImageSliderProps) => {
           nextArrow={
             active !== images.length - 1 ? (
               <button className="bg-white p-2 rounded-full font-medium hover:scale-105 active:scale-95 shadow-md shrink-0 mr-2 w-fit">
-                <ArrowRightIcon />
+                <ArrowRightIcon className="text-black" />
               </button>
             ) : (
               <button></button>
