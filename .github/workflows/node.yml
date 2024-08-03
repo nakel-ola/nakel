@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,11 +18,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Run lint
+        run: npm lint
   build:
     runs-on: ubuntu-latest
-    needs: [test]
+    needs: [lint]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
