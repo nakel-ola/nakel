@@ -6,6 +6,7 @@ on:
     types:
       - requested
       - completed
+      - in_progress
 
 jobs:
   cancel:
