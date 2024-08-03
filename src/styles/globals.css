@@ -9,6 +9,7 @@
     transition: all 300ms ease;
     margin: 0;
     padding: 0;
+    mask-mode: alpha;
   }
 
   *::-webkit-scrollbar {
