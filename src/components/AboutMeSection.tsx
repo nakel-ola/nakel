@@ -30,11 +30,11 @@ export const AboutMeSection = (props: Props) => {
       </div>
 
       <div className="flex">
-        <div className="w-[288px] h-[356px] shrink-0 bg-primary rounded-3xl overflow-hidden hidden lg:block">
+        <div className="w-[288px] h-[356px] shrink-0 rounded-3xl overflow-hidden hidden lg:block">
           <img
-            src="/1695293516052-removebg.webp"
+            src="/Olamilekan.jpg"
             alt=""
-            className="h-full w-full object-cover translate-y-[10%]"
+            className="h-full w-full object-cover translate-y-[88px] scale-[1.5] "
           />
         </div>
 

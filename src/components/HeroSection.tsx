@@ -63,10 +63,13 @@ export const HeroSection = (props: Props) => {
             </h1>
 
             <p className="text-white my-10 max-w-2xl">
-              I&apos;m a full stack developer with understanding of both frontend and backend web development. I am 
-              proficient in a variety of programming languages, frameworks, and tools, allowing for the development and
-              deployment of dynamic online applications, websites, and powerful web services. Excellent organizational
-              skills, great attention to detail, and an aptitude for creative problem-solving.
+              I&apos;m a full stack developer with understanding of both
+              frontend and backend web development. I am proficient in a variety
+              of programming languages, frameworks, and tools, allowing for the
+              development and deployment of dynamic online applications,
+              websites, and powerful web services. Excellent organizational
+              skills, great attention to detail, and an aptitude for creative
+              problem-solving.
             </p>
           </div>
         </div>
@@ -103,13 +106,13 @@ export const HeroSection = (props: Props) => {
       </div>
 
       <div
-        className="w-full lg:w-[364px] h-[356.26px] lg:h-[500px] shrink-0 bg-primary rounded-3xl overflow-hidden"
+        className="w-full lg:w-[364px] h-[356.26px] lg:h-[500px] shrink-0 rounded-3xl overflow-hidden"
         style={{ transform, transition }}
       >
         <img
-          src="/1695293516052-removebg.webp"
+          src="/Olamilekan.jpg"
           alt=""
-          className="lg:h-full lg:w-full object-cover translate-y-[-10%] lg:translate-y-0"
+          className="lg:h-full lg:w-full object-cover translate-y-[0%] lg:translate-y-[140px] lg:scale-[1.6]"
         />
       </div>
     </div>
