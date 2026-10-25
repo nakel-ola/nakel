@@ -14,11 +14,11 @@
   }
 
   ::selection {
-    @apply bg-ball text-line;
+    @apply bg-brand text-line;
   }
 
   :focus-visible {
-    outline: 2px solid theme("colors.ball");
+    outline: 2px solid theme("colors.brand.DEFAULT");
     outline-offset: 3px;
   }
 
@@ -36,38 +36,16 @@
 }
 
 @layer components {
-  /* Display type: tight, confident, mixed case. */
-  .condensed {
-    font-weight: 500;
-    letter-spacing: -0.045em;
-    line-height: 0.92;
+  /* Heavy display type, as in the reference. */
+  .display {
+    font-weight: 800;
+    letter-spacing: -0.065em;
+    line-height: 0.8;
+    text-transform: uppercase;
   }
 
-  .label {
-    @apply font-mono text-[11px] uppercase tracking-[0.14em];
-  }
-
-  /* Frosted glass panel for the broadcast UI. */
-  .plate {
-    @apply rounded-md border border-white/10 bg-white/[0.04] text-line backdrop-blur-xl;
-  }
-
-  .slant {
-    @apply rounded-full;
-  }
-
-  .surface {
-    background-color: theme("colors.table.night");
-  }
-
-  /* Net mesh seen from above. */
-  .net {
-    background-image: repeating-linear-gradient(
-        90deg,
-        rgba(237, 237, 237, 0.14) 0 1px,
-        transparent 1px 6px
-      ),
-      repeating-linear-gradient(0deg, rgba(237, 237, 237, 0.14) 0 1px, transparent 1px 6px);
+  .link-underline {
+    @apply underline decoration-1 underline-offset-[6px] transition-[text-decoration-color] hover:decoration-transparent;
   }
 }
 
@@ -86,17 +64,3 @@ html.lenis body {
   overflow: clip;
 }
 
-@keyframes live-pulse {
-  50% {
-    opacity: 0.2;
-  }
-}
-.animate-live {
-  animation: live-pulse 1.4s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-live {
-    animation: none;
-  }
-}

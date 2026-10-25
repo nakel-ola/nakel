@@ -1,70 +1,72 @@
-import TumbleWall, { TumbleWallHandle } from "@/components/bits/TumbleWall";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { gsap, prefersReducedMotion, SplitText, useGSAP } from "@/lib/gsap";
+import { logoFor } from "@/lib/logos";
+import { useRef } from "react";
+
+// Logos drawn in white need a dark tile to be visible.
+const LIGHT_LOGOS = /^next/i;
 
 type Props = {
   skills: SkillResponse[];
 };
 
 export const Skills = ({ skills }: Props) => {
-  const wall = useRef<TumbleWallHandle>(null);
-  // Dragging would swallow page scroll on touch screens; there a tap makes a tool hop instead.
-  const [finePointer, setFinePointer] = useState(false);
+  const root = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    setFinePointer(window.matchMedia("(pointer: fine)").matches);
-  }, []);
-
-  const items = useMemo(
-    () => skills.map((s) => ({ src: s.image, title: s.name, alt: s.name })),
-    [skills]
+  useGSAP(
+    () => {
+      if (prefersReducedMotion()) return;
+      SplitText.create(".skills-title", {
+        type: "chars",
+        mask: "chars",
+        autoSplit: true,
+        onSplit: (self) =>
+          gsap.from(self.chars, {
+            yPercent: 110,
+            duration: 1.1,
+            stagger: 0.03,
+            ease: "expo.out",
+            scrollTrigger: { trigger: ".skills-title", start: "top 85%", once: true },
+          }),
+      });
+      gsap.from(".skill-cell", {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.8,
+        ease: "expo.out",
+        stagger: { each: 0.03, grid: "auto", from: "start" },
+        scrollTrigger: { trigger: ".skills-grid", start: "top 85%", once: true },
+      });
+    },
+    { scope: root }
   );
 
   return (
-    <section id="skills" data-set="Drills" className="relative px-4 py-24 md:px-10 md:py-32">
+    <section ref={root} id="skills" className="relative bg-paper px-4 pb-24 pt-28 text-ink md:px-[3.5vw] md:pb-36 md:pt-40">
       <div className="flex items-end justify-between gap-6">
-        <div>
-          <h2 className="condensed text-[17vw] md:text-[9vw]">Drills</h2>
-          <p className="label mt-3 text-line/40">
-            {skills.length} tools · {finePointer ? "grab and throw" : "tap to bounce"}
-          </p>
-        </div>
-        <button
-          data-cursor
-          onClick={() => wall.current?.shake(1.2)}
-          className="mb-2 rounded-full border border-white/15 px-4 py-2 text-sm font-medium transition-colors hover:border-ball hover:text-ball-text"
-        >
-          Multiball
-        </button>
+        <h2 className="skills-title display text-[22vw] md:text-[15vw]">Skills</h2>
+        <p className="pb-[1.5vw] text-sm text-ink/55">({String(skills.length).padStart(2, "0")})</p>
       </div>
 
-      {/* The drill runs on its own small table. */}
-      <div className="relative mt-10 h-[62svh] min-h-[440px] overflow-hidden rounded-2xl border border-white/10 bg-table md:h-[70svh]">
-        <span aria-hidden className="net pointer-events-none absolute inset-y-0 left-1/2 w-2 -translate-x-1/2" />
-        <span aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-white/[0.06]" />
-        <TumbleWall
-          ref={wall}
-          items={items}
-          count={items.length}
-          shape="chip"
-          size={140}
-          sizeVariance={0.2}
-          fill={0.36}
-          frameColor="#222327"
-          textColor="#EDEDED"
-          shadow={0.9}
-          bounce={0.5}
-          spin={0.5}
-          entrance="rain"
-          stagger={60}
-          draggable={finePointer}
-          hoverScale={1.06}
-          ariaLabel="Tools I work with"
-        />
-      </div>
-
-      <ul className="sr-only">
+      <ul className="skills-grid mt-12 grid grid-cols-2 border-l border-t border-ink/15 sm:grid-cols-3 md:mt-20 md:grid-cols-5">
         {skills.map((s) => (
-          <li key={s.name}>{s.name}</li>
+          <li key={s.name} className="skill-cell border-b border-r border-ink/15">
+            <div className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden p-4 md:p-5">
+              <span className="absolute inset-0 origin-bottom scale-y-0 bg-brand transition-transform duration-500 ease-expo group-hover:scale-y-100" />
+              <span
+                className={`relative flex h-10 w-10 items-center justify-center transition-transform duration-700 ease-expo group-hover:rotate-[360deg] md:h-12 md:w-12 ${
+                  !logoFor(s.name) && LIGHT_LOGOS.test(s.name) ? "bg-ink" : "bg-white"
+                }`}
+              >
+                {logoFor(s.name) ?? s.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={logoFor(s.name) ?? s.image} alt="" className="h-6 w-6 object-contain md:h-7 md:w-7" />
+                ) : null}
+              </span>
+              <span className="relative text-base font-semibold tracking-tight transition-colors duration-300 group-hover:text-line md:text-lg">
+                {s.name}
+              </span>
+            </div>
+          </li>
         ))}
       </ul>
     </section>

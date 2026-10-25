@@ -8,22 +8,16 @@ module.exports = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
-        // Graphite table and floor.
-        table: {
-          DEFAULT: "#151619",
-          deep: "#111215",
-          night: "#0D0E10",
-        },
-        // Hairlines and text.
+        // Text on dark and blue.
         line: "#EDEDED",
-        // The one accent: brand blue (also the ball).
-        ball: {
-          DEFAULT: "#2563EB",
-          // Lighter tint for text on the dark background (AA contrast).
-          text: "#6E9BF7",
-        },
-        rubber: "#2563EB",
         ink: "#09090A",
+        // Editorial direction: brand blue field, paper white sections.
+        brand: {
+          DEFAULT: "#2563EB",
+          light: "#3B7BF7",
+          deep: "#1B47C4",
+        },
+        paper: "#F3F5F9",
       },
       transitionTimingFunction: {
         expo: "cubic-bezier(0.16, 1, 0.3, 1)",

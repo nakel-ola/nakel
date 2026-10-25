@@ -1,9 +1,7 @@
 import CustomCursor from "@/components/bits/CustomCursor";
-import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Preloader } from "@/components/Preloader";
 import { IntroProvider } from "@/components/providers/Intro";
-import { MatchProvider } from "@/components/providers/Match";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -54,27 +52,27 @@ export default function App({ Component, pageProps, router }: AppProps) {
 
       <SmoothScroll>
         <IntroProvider>
-          <MatchProvider>
           <div className={cn(fonts, "relative font-sans")}>
             <Preloader />
-            <Navbar />
+            <Navbar
+              counts={{ work: (pageProps.work ?? pageProps.projects)?.length, skills: pageProps.skills?.length }}
+            />
             <main>
               <Component {...pageProps} />
             </main>
-            <Footer />
             <CustomCursor
               circleSize={36}
               dotSize={6}
-              circleColor="rgba(237,237,237,0.6)"
-              dotColor="#2563EB"
+              circleColor="#ffffff"
+              dotColor="#ffffff"
               circleBorderWidth={1}
+              mixBlendMode="difference"
               targetPadding={6}
               targets={["[data-cursor]"]}
               elastic
               zIndex={95}
             />
           </div>
-          </MatchProvider>
         </IntroProvider>
       </SmoothScroll>
     </>

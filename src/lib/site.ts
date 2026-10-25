@@ -4,10 +4,10 @@ import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 export const EMAIL = "nunuolamilekan@gmail.com";
 
 export const sections = [
-  { id: "work", label: "Highlights" },
-  { id: "about", label: "Profile" },
-  { id: "skills", label: "Drills" },
-  { id: "contact", label: "Serve" },
+  { id: "work", label: "Work" },
+  { id: "skills", label: "Tools" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
 ];
 
 export const socials: { label: string; href: string; Icon: IconType }[] = [
