@@ -1,25 +1,44 @@
-// import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import { createClient } from "next-sanity";
+import { createClient, groq } from "next-sanity";
 
-export const config = {
+export const sanityClient = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET ?? "production",
   apiVersion: "2022-08-20",
   useCdn: true,
   token: process.env.SANITY_TOKEN,
-};
+});
 
-export const sanityClient = createClient(config);
+export const homeQuery = groq`
+  {
+    "about": *[_type == "about"][0] {
+      ...,
+      "image": image.asset->url,
+      "resume": resume.asset->url,
+    },
+    "skills": *[_type == "skills"] | order(createdAt asc) {
+      ...,
+      "image": image.asset->url,
+    },
+    "projects": *[_type == "projects"] | order(pos asc) {
+      ...,
+      "images": images[].asset->url,
+      tech[]->{
+        ...,
+        "image": image.asset->url,
+      }
+    }
+  }
+`;
 
-// export const sanity = sanityClient({
-//   projectId: process.env.SANITY_PROJECT_ID,
-//   dataset: "production",
-//   apiVersion: "2022-08-20",
-//   useCdn: true,
-//   token: process.env.SANITY_TOKEN,
-// });
-
-const builder = imageUrlBuilder(sanityClient);
-
-export const urlFor = (source: string) => builder.image(source);
+export const projectsQuery = groq`
+  {
+    "projects": *[_type == "projects"] | order(pos asc) {
+      ...,
+      "images": images[].asset->url,
+      tech[]->{
+        ...,
+        "image": image.asset->url,
+      }
+    }
+  }
+`;

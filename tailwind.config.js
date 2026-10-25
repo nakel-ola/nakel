@@ -2,28 +2,31 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
-    fontFamily: {
-      "signika-negative": ["var(--font-signika-negative)"],
-    },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
       colors: {
-        primary: {
-          DEFAULT: "#2563eb",
-          light: "#eff6ff",
+        // Graphite table and floor.
+        table: {
+          DEFAULT: "#151619",
+          deep: "#111215",
+          night: "#0D0E10",
         },
-        dark: "#111111",
-        "card-color": "#1a1a1c",
-        "line-color": "#323335",
-        gray: "#9294a0",
-        "charcoal-gray": "#36384f",
-        white: "#ffffff",
-        black: "#000000",
-        hover: "#f1f5f9",
-        transparent: "transparent",
-        green: "#22C55E",
-        blue: "#38BDF8",
-        wine: "#e11d48",
-        yellow: "#FACC15",
+        // Hairlines and text.
+        line: "#EDEDED",
+        // The one accent: brand blue (also the ball).
+        ball: {
+          DEFAULT: "#2563EB",
+          // Lighter tint for text on the dark background (AA contrast).
+          text: "#6E9BF7",
+        },
+        rubber: "#2563EB",
+        ink: "#09090A",
+      },
+      transitionTimingFunction: {
+        expo: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

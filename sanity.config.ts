@@ -1,5 +1,5 @@
 import { buildLegacyTheme, defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool } from "sanity/structure";
 import schemas from "./src/schemas";
 
 const props = {
@@ -58,7 +58,7 @@ const config = defineConfig({
   title: "Olamilekan Studio",
   basePath: "/admin",
   theme: myTheme,
-  plugins: [deskTool()],
+  plugins: [structureTool()],
   schema: {
     types: schemas,
   },

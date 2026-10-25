@@ -14,6 +14,8 @@ interface AboutResponse extends sanityDefaultProps {
   address: string;
   email: string;
   resume: string;
+  github?: string;
+  instagram?: string;
   educations: Educations[];
   works: Works[];
 }
@@ -40,7 +42,7 @@ interface SkillResponse {
   name: string;
   image: string;
   color: string;
-  bgColor: string;
+  bgColor?: string;
   percentage: number;
 }
 

@@ -1,42 +1,47 @@
-import { AboutMeSection } from "@/components/AboutMeSection";
-import { HeroSection } from "@/components/HeroSection";
-import { Modal } from "@/components/Modal";
-import { ProjectsSection } from "@/components/ProjectsSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { SkillsSection } from "@/components/SkillsSection";
-import { fetchData } from "@/lib/fetchData";
-import { GetServerSideProps } from "next";
-import React, { Fragment, useState } from "react";
+import { ProjectModal } from "@/components/ProjectModal";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
+import { Hero } from "@/components/sections/Hero";
+import { Skills } from "@/components/sections/Skills";
+import { Work } from "@/components/sections/Work";
+import { homeQuery, sanityClient } from "@/lib/sanity";
+import { GetStaticProps } from "next";
+import { useCallback, useState } from "react";
 
-type HomePropType = {
+type HomeProps = {
   about: AboutResponse;
   skills: SkillResponse[];
-  services: ServiceResponse[];
   projects: ProjectResponse[];
 };
 
-export default function Home(props: HomePropType) {
-  const { about, skills, projects = [], services } = props;
+const FEATURED = 6;
 
-  const [selected, setSelected] = useState<ProjectResponse | null>(null);
+export default function Home({ about, skills, projects }: HomeProps) {
+  const [selected, setSelected] = useState<number | null>(null);
+  const featured = projects.slice(0, FEATURED);
+  const close = useCallback(() => setSelected(null), []);
+
   return (
-    <Fragment>
-      <HeroSection resumeUrl={about.resume} />
-      <ProjectsSection
-        projects={projects.sort((a, b) => a.pos - b.pos)}
-        selected={selected}
-        setSelected={setSelected}
+    <>
+      <Hero resumeUrl={about.resume} />
+      <Work
+        projects={featured}
+        total={projects.length}
+        onSelect={(p) => setSelected(featured.indexOf(p))}
       />
-      <AboutMeSection about={about} />
-      <SkillsSection skills={skills} />
+      <About about={about} projectCount={projects.length} />
+      <Skills skills={skills} />
+      <Contact />
 
-      <Modal selected={selected} setSelected={setSelected} />
-    </Fragment>
+      <ProjectModal
+        project={selected === null ? null : featured[selected]}
+        onClose={close}
+      />
+    </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const data = await fetchData();
-
-  return { props: data };
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const data = await sanityClient.fetch<HomeProps>(homeQuery);
+  return { props: data, revalidate: 60 };
 };

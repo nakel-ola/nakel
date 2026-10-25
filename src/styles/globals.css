@@ -3,73 +3,100 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    transition: all 300ms ease;
-    margin: 0;
-    padding: 0;
-  }
-
-  *::-webkit-scrollbar {
-    @apply w-[5px] h-[5px];
-  }
-
-  *::-webkit-scrollbar-thumb {
-    @apply rounded-[30px] bg-primary;
-  }
-
-  *::-webkit-scrollbar-track {
-    @apply bg-transparent relative top-0 right-0;
-  }
-
-  *::-webkit-scrollbar-track-piece {
-    @apply bg-transparent;
-  }
-
-  *::-ms-scrollbar {
-    @apply w-[5px] h-[5px];
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-dark font-signika-negative text-white;
+    @apply bg-ink font-sans text-line;
+    overflow-x: clip;
   }
 
-  .click {
-    @apply hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 group-hover:scale-105 group-active:scale-95;
+  ::selection {
+    @apply bg-ball text-line;
   }
 
-  .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+  :focus-visible {
+    outline: 2px solid theme("colors.ball");
+    outline-offset: 3px;
   }
 
-  .scrollbar-hidden::-ms-overflow-style {
-    display: none;
-    background-color: #2463eb;
-  }
-
-  .scrollbar-hidden {
-    scrollbar-width: none;
+  img {
+    -webkit-user-drag: none;
   }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-background-clip: text;
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: theme("colors.line");
     transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px transparent;
+  }
+}
+
+@layer components {
+  /* Display type: tight, confident, mixed case. */
+  .condensed {
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
   }
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em];
   }
 
-  .scrollbar-hide::-ms-overflow-style {
-    display: none;
+  /* Frosted glass panel for the broadcast UI. */
+  .plate {
+    @apply rounded-md border border-white/10 bg-white/[0.04] text-line backdrop-blur-xl;
   }
 
-  .scrollbar-hide {
-    scrollbar-width: none;
+  .slant {
+    @apply rounded-full;
+  }
+
+  .surface {
+    background-color: theme("colors.table.night");
+  }
+
+  /* Net mesh seen from above. */
+  .net {
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(237, 237, 237, 0.14) 0 1px,
+        transparent 1px 6px
+      ),
+      repeating-linear-gradient(0deg, rgba(237, 237, 237, 0.14) 0 1px, transparent 1px 6px);
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@keyframes live-pulse {
+  50% {
+    opacity: 0.2;
+  }
+}
+.animate-live {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-live {
+    animation: none;
   }
 }
